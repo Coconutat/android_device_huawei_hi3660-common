@@ -1,0 +1,4 @@
+service displayengine-hal-1-1 /vendor/bin/hw/vendor.huawei.hardware.hwdisplay.displayengine@1.1-service
+    class hal
+    user system
+    group graphics system
