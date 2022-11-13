@@ -7,18 +7,24 @@
 ## Common Path
 COMMON_PATH := device/huawei/hi3660-common
 
-# Arch
+# Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := cortex-a73
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53
+TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a73
+
+# APEX
+DEXPREOPT_GENERATE_APEX_IMAGE := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := hi3660
 
@@ -51,11 +57,12 @@ BOARD_CUSTOM_BOOTIMG_MK := $(COMMON_PATH)/mkbootimg.mk
 # 来自盘古内核
 BOARD_KERNEL_BASE := 0x00078000 
 BOARD_KERNEL_CMDLINE := loglevel=4 initcall_debug=n page_tracker=on slub_min_objects=16 unmovable_isolate1=2:192M,3:224M,4:256M printktimer=0xfff0a000,0x534,0x538 androidboot.selinux=permissive buildvariant=user
-BOARD_KERNEL_IMAGE_NAME := Image.gz
+BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --second_offset 0x00e88000 --tags_offset 0x07988000
 
 # Kernel Source
+# TARGET_KERNEL_CONFIG := merge_hi3660_defconfig
 TARGET_KERNEL_CONFIG := Pangu_P10_defconfig
 TARGET_KERNEL_SOURCE := kernel/huawei/hi3660
 
